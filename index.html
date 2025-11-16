@@ -94,10 +94,10 @@
     .content-header{display:flex; align-items:center; justify-content:space-between; gap:12px; border-bottom:1px dashed rgba(212,175,55,.25); padding-bottom:10px; margin-bottom:10px}
     .crumbs{display:flex; align-items:center; gap:8px; color:var(--muted); font-size:13px}
     .crumbs .current{color:var(--accent); font-weight:800}
-    .arabic{font-size:clamp(25px, 4.6vw, 22px); line-height:2.2; color:#fff; text-align:justify; margin-top:6px; word-wrap:break-word}
+    .arabic{font-size:clamp(20px, 4.6vw, 22px); line-height:2.2; color:#fff; text-align:justify; margin-top:6px; word-wrap:break-word}
     .separator{display:none; align-items:center; gap:10px; margin:16px 0 10px; color:var(--accent)}
     .separator .line{flex:1; height:1px; background:linear-gradient(90deg, transparent, var(--accent), transparent)}
-    .translation{font-size:clamp(18px, 3.6vw, 16px); color:var(--muted); text-align:justify; background:#0c1a12; border:1px dashed rgba(212,175,55,.25); border-radius:12px; padding:14px}
+    .translation{font-size:clamp(14px, 3.6vw, 16px); color:var(--muted); text-align:justify; background:#0c1a12; border:1px dashed rgba(212,175,55,.25); border-radius:12px; padding:14px}
 
     /* ——— دکمه‌ها ——— */
     .btn{appearance:none; border:none; cursor:pointer; background:#102018; color:var(--text); border:1px solid var(--ring); border-radius:12px; padding:12px 14px; font-size:14px; font-weight:700; min-height:44px}
@@ -190,19 +190,6 @@
 
 
 
-.light {
-  --bg:#e2eca8;
-  --panel:#4d8b79;
-  --accent:#0d5e3b;
-  --text:#fff7f7;
-  --muted:#d5ddd2;
-  --soft:#a9b17b;
-  --ring:#885656;
-}
-
-
-
-
   </style>
 
 
@@ -234,20 +221,16 @@
 <!-- منوی کشویی -->
 <nav id="menuPanel" class="menu-panel">
   <button id="btnFeedback">نظر به برنامه</button>
-  <button id="btnTheme">تغییر تم</button>
+  <button id="btnAbout">درباره ما</button>
   <button id="btnContact">ارتباط با ما</button>
-  <button id="btnSupport">حمایت از برنامه</button>  
-<button id="btnAbout">درباره ما</button>
-<img src="https://raw.githubusercontent.com/JavadCamback/ziarat/main/photo22066007018-removebg-preview.png" class="menu-image">
 </nav>
 
 <!-- مودال نظر به برنامه -->
 <div id="modalFeedback" class="modal">
   <button class="close" onclick="closeModal('modalFeedback')">✖</button>
   <h3 style="color:var(--accent);margin-bottom:10px;">از شما خواهش داریم🙏</h3>
-  <p>ما خیلی به نظر شما نیاز داریم! نظرات مثبت و پیشنهادات شما باعث میشه این برنامه بهتر و بهتر بشه. لطفاروی دکمه زیر کلیک کنید و نظر ارزشمند خود را ثبت کنید. پیشاپیش از نظر شما مچکریم🌹</p>
- <div class="btns">
-    <a href="https://cafebazaar.ir/app/javdan.avayniayesh.games">⭐ نظر به برنامه  ⭐</a>
+  <p>ما خیلی به نظر شما نیاز داریم! نظرات مثبت و پیشنهادات شما باعث میشه این برنامه بهتر و بهتر بشه. لطفا به مارکتی که برنامه مارا از آنجا دانلود کرده اید بروید و نظر ارزشمند خود را ثبت کنید. پیشاپیش از نظر شما مچکریم🌹</p>
+ 
   
   </div>
 </div>
@@ -266,28 +249,6 @@
   <p>🌐 جهت بازدید از سایت : <a href="https://javadcamback.github.io/Javdan_Games/" style="color:var(--accent)">اینجا کلیک کنید</a></p>
 </div>
 
-<!-- مودال حمایت مالی -->
-<div id="modalSupport" class="modal">
-  <button class="close" onclick="closeModal('modalSupport')">✖</button>
-  <h3 style="color:var(--accent); margin-bottom:10px;">حمایت از برنامه</h3>
-  <p>این برنامه کاملاً رایگان و بدون تبلیغات است.  
-  اگر دوست داشتید از ما حمایت کنید، می‌تونید هر مبلغی خواستید به شماره کارت زیر واریز کنید ❤️</p>
-
-  <div style="
-    background:#102018;
-    border:1px solid var(--accent);
-    padding:12px;
-    border-radius:12px;
-    font-size:16px;
-    color:var(--accent);
-    user-select:text;
-    direction:ltr;
-  ">
-    5892 1017 1100 3463
-  </div>
-
-  <button onclick="copyCard()" class="btn" style="margin-top:12px;">کپی شماره کارت</button>
-</div>
 
 
 
@@ -358,11 +319,6 @@
 
 
   <script>
-    
-    if(localStorage.getItem("theme") === "light"){
-  document.body.classList.add("light");
-}
-
     // ——— داده‌ها (بدون حذف محتوا) ———
     // توجه: متن‌ها همان ساختار نسخه‌ی شما را حفظ می‌کنند.
     const DATA = {
@@ -568,10 +524,6 @@ pauseBtn.onclick = () => audio.pause();
   document.getElementById('btnFeedback').onclick=()=>{openModal('modalFeedback');};
   document.getElementById('btnAbout').onclick=()=>{openModal('modalAbout');};
   document.getElementById('btnContact').onclick=()=>{openModal('modalContact');};
-  document.getElementById("btnSupport").addEventListener("click", () => {
-  openModal("modalSupport");
-});
-
 
   function openModal(id){
     document.querySelectorAll('.modal').forEach(m=>m.classList.remove('active'));
@@ -583,20 +535,7 @@ pauseBtn.onclick = () => audio.pause();
     document.getElementById(id).classList.remove('active');
   }
 
-document.getElementById("btnTheme").addEventListener("click", () => {
-  document.body.classList.toggle("light");
 
-  // ذخیره تم انتخابی
-  localStorage.setItem("theme", 
-    document.body.classList.contains("light") ? "light" : "dark"
-  );
-});
-
-
-function copyCard(){
-  navigator.clipboard.writeText("5892101711003463");
-  alert("شماره کارت کپی شد ✔️");
-}
 
 
   </script>
